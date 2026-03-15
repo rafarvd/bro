@@ -21,7 +21,7 @@ const run = async () => {
     await new Promise((r) => setTimeout(r, 5000));
     await page.waitForSelector("#url");
     await page.type("#url", url);
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 5000));
     await page.click("text=Launch Workspace");
     await new Promise((r) => setTimeout(r, minutos * 60 * 1000));
     await page.screenshot({ path: "screen.png" });
