@@ -2,6 +2,7 @@ import asyncio
 import random
 import os
 from camoufox import AsyncCamoufox
+from camoufox import DefaultAddons
 # from dotenv import load_dotenv
 # load_dotenv()
 
