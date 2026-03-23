@@ -1,31 +1,31 @@
-# name: Docker Python Bot
+name: Docker Python Bot
 
-# on:
-#   workflow_dispatch:
-#   schedule:
-#     - cron: "15 */1 * * *"
-#   push:
-#     branches: ["main"]
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 */1 * * *"
+  push:
+    branches: ["main"]
 
-# jobs:
-#   run:
-#     runs-on: ubuntu-latest
+jobs:
+  run:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-#       - name: Build Docker
-#         run: docker build -t bot .
+      - name: Build Docker
+        run: docker build -t bot .
 
-#       - name: Run Docker
-#         run: |
-#           docker run --rm \
-#             -v "${{ github.workspace }}:/app" \
-#             bot
+      - name: Run Docker
+        run: |
+          docker run --rm \
+            -v "${{ github.workspace }}:/app" \
+            bot
 
-#       - name: Upload screenshot
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: screenshot
-#           path: screen.png
+      - name: Upload screenshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshot
+          path: screen.png
