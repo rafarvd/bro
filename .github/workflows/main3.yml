@@ -30,7 +30,7 @@ jobs:
             -e URL_BROWSER="$URL_BROWSER" \
             -e URL="$URL" \
             -e MINUTOS="$MINUTOS" \
-            -e NUM_BROWSERS="NUM_BROWSERS" \
+            -e NUM_BROWSERS="$NUM_BROWSERS" \
             bot
 
       - name: Upload screenshot
