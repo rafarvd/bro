@@ -1,41 +1,41 @@
-name: Docker Python
+# name: Docker Python
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "15 */1 * * *"
-  push:
-    branches: ["main"]
+# on:
+#   workflow_dispatch:
+#   schedule:
+#     - cron: "15 */1 * * *"
+#   push:
+#     branches: ["main"]
 
-jobs:
-  run:
-    runs-on: ubuntu-latest
+# jobs:
+#   run:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v4
 
-      - name: Build Docker
-        run: docker build -t bro .
+#       - name: Build Docker
+#         run: docker build -t bro .
 
-      - name: Run Docker
-        env:
-          URL_BROWSER: ${{ secrets.URL_BROWSER }}
-          URL: ${{ secrets.URL }}
-          MINUTOS: ${{ secrets.MINUTOS }}
-          NUM_BROWSERS: ${{ secrets.NUM_BROWSERS }}
-        continue-on-error: true
-        run: |
-          docker run --rm \
-            -v "${{ github.workspace }}:/app" \
-            -e URL_BROWSER="$URL_BROWSER" \
-            -e URL="$URL" \
-            -e MINUTOS="$MINUTOS" \
-            -e NUM_BROWSERS="$NUM_BROWSERS" \
-            bro
+#       - name: Run Docker
+#         env:
+#           URL_BROWSER: ${{ secrets.URL_BROWSER }}
+#           URL: ${{ secrets.URL }}
+#           MINUTOS: ${{ secrets.MINUTOS }}
+#           NUM_BROWSERS: ${{ secrets.NUM_BROWSERS }}
+#         continue-on-error: true
+#         run: |
+#           docker run --rm \
+#             -v "${{ github.workspace }}:/app" \
+#             -e URL_BROWSER="$URL_BROWSER" \
+#             -e URL="$URL" \
+#             -e MINUTOS="$MINUTOS" \
+#             -e NUM_BROWSERS="$NUM_BROWSERS" \
+#             bro
 
-      - name: Upload screenshot
-        uses: actions/upload-artifact@v4
-        with:
-          name: screenshot
-          path: "*.png"
+#       - name: Upload screenshot
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: screenshot
+#           path: "*.png"
