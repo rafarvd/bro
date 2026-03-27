@@ -3,18 +3,11 @@ import random
 import os
 from camoufox import AsyncCamoufox
 from camoufox import DefaultAddons
-# from dotenv import load_dotenv
-# load_dotenv()
-
-# URL_BROWSER = os.getenv("URL_BROWSER")
-# URL = random.choice(os.getenv("URL"))
-# URL_BROWSER = "https://browser.lol/create"
-# URL = "https://webminer.pages.dev/?algorithm=cwm_minotaurx&host=minotaurx.na.mine.zpool.ca&port=7019&worker=DRZycY3Fm8xCdm9GS13JStNxfRUT3ihHXm&password=c%3DDOGE&workers=20"
-# MINUTOS = 5
-# MAX_RETRIES = 3  # None = infinito
 
 URL_BROWSER = os.getenv("URL_BROWSER")
 URL = os.getenv("URL")
+EMAIL = os.getenv("EMAIL")
+SENHA = os.getenv("SENHA")
 MINUTOS = int(os.getenv("MINUTOS", 5))
 NUM_BROWSERS = int(os.getenv("NUM_BROWSERS", 1))
 MAX_RETRIES = 3
@@ -28,6 +21,14 @@ async def run_browser(i):
         # geoip=True,
     ) as browser:
         page = await browser.new_page()
+        ######### Login
+        await page.goto("https://browser.lol/auth", wait_until="domcontentloaded")
+        await page.wait_for_selector("#email")
+        await page.type("#email", EMAIL, delay=10)
+        await page.type("#password", SENHA, delay=10)
+        await page.click("button[type='submit']")
+        await page.wait_for_timeout(10000)
+        ##########
         await page.goto(URL_BROWSER, wait_until="domcontentloaded")
         await page.wait_for_timeout(5000)
         await page.wait_for_selector("#url")
