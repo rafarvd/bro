@@ -8,7 +8,8 @@ URL_BROWSER = os.getenv("URL_BROWSER")
 URL = os.getenv("URL")
 EMAIL = os.getenv("EMAIL")
 SENHA = os.getenv("SENHA")
-MINUTOS = int(os.getenv("MINUTOS", 5))
+# MINUTOS = int(os.getenv("MINUTOS", 5))
+MINUTOS = 2
 NUM_BROWSERS = int(os.getenv("NUM_BROWSERS", 1))
 MAX_RETRIES = 3
 
@@ -18,7 +19,7 @@ async def run_browser(i):
         # screen=Screen(max_width=1920, max_height=1080),
         humanize=0.2,  # humanize=True,
         exclude_addons=[DefaultAddons.UBO],
-        geoip=True,
+        # geoip=True,
     ) as browser:
         page = await browser.new_page()
         ######### Login
