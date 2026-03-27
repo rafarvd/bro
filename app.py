@@ -18,16 +18,16 @@ async def run_browser(i):
         # screen=Screen(max_width=1920, max_height=1080),
         humanize=0.2,  # humanize=True,
         exclude_addons=[DefaultAddons.UBO],
-        # geoip=True,
+        geoip=True,
     ) as browser:
         page = await browser.new_page()
         ######### Login
-        await page.goto("https://browser.lol/auth", wait_until="domcontentloaded")
-        await page.wait_for_selector("#email")
-        await page.type("#email", EMAIL, delay=10)
-        await page.type("#password", SENHA, delay=10)
-        await page.click("button[type='submit']")
-        await page.wait_for_timeout(10000)
+        # await page.goto("https://browser.lol/auth", wait_until="domcontentloaded")
+        # await page.wait_for_selector("#email")
+        # await page.type("#email", EMAIL, delay=10)
+        # await page.type("#password", SENHA, delay=10)
+        # await page.click("button[type='submit']")
+        # await page.wait_for_timeout(10000)
         ##########
         await page.goto(URL_BROWSER, wait_until="domcontentloaded")
         await page.wait_for_timeout(5000)
