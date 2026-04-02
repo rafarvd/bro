@@ -11,7 +11,7 @@ SENHA = os.getenv("SENHA")
 MINUTOS = int(os.getenv("MINUTOS", 5))
 NUM_BROWSERS = int(os.getenv("NUM_BROWSERS", 1))
 MAX_RETRIES = 3
-DELAY = 5
+DELAY = 50
 
 async def run_browser(i):
     async with AsyncCamoufox(
